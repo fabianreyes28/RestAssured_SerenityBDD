@@ -1,0 +1,131 @@
+================================================================================
+                    CONCLUSIONES Y HALLAZGOS DEL EJERCICIO
+                    QA Challenge - Automatización E2E SauceDemo
+================================================================================
+
+FECHA: Diciembre 2025
+AUTOR: Kevin Donoso
+
+================================================================================
+1. OBJETIVO DEL EJERCICIO
+================================================================================
+
+Realizar una prueba funcional automatizada (E2E) del flujo de compra en
+https://www.saucedemo.com que incluya:
+
+  [✓] Autenticarse con usuario: standard_user y password: secret_sauce
+  [✓] Agregar dos productos al carrito
+  [✓] Visualizar el carrito
+  [✓] Completar el formulario de compra
+  [✓] Finalizar la compra hasta la confirmación: "THANK YOU FOR YOUR ORDER"
+
+================================================================================
+2. RESULTADO DE LA EJECUCIÓN
+================================================================================
+
+Estado: EXITOSO (BUILD SUCCESSFUL)
+Tests ejecutados: 1
+Tests pasados: 1
+Tests fallidos: 0
+Tiempo de ejecución: ~30 segundos
+
+================================================================================
+3. FRAMEWORK Y PATRÓN UTILIZADO
+================================================================================
+
+Framework: SerenityBDD 4.0.14
+Patrón: ScreenPlay
+
+Elegí el patrón ScreenPlay porque organiza el código de manera clara:
+
+- TASKS: Acciones de alto nivel que realiza el usuario
+  * OpenPage - Navegar a la página de login
+  * Login - Autenticarse con credenciales
+  * AddProduct - Agregar producto al carrito
+  * ViewCart - Visualizar el carrito
+  * Checkout - Completar formulario de información
+  * FinishPurchase - Finalizar la compra
+
+- USERINTERFACES: Localizadores de elementos de cada página
+  * LoginPage, InventoryPage, CartPage, CheckoutPage
+
+- STEPS: Conexión entre Gherkin y Tasks (PurchaseSteps.java)
+
+================================================================================
+4. HALLAZGOS TÉCNICOS
+================================================================================
+
+4.1 LOCALIZADORES DE ELEMENTOS
+------------------------------
+Al inspeccionar la página con DevTools (F12), encontré que SauceDemo utiliza
+el atributo "data-test" para identificar elementos, lo cual facilita la
+automatización y hace los tests más estables.
+
+Ejemplos de localizadores que identifiqué:
+- Login: id="user-name", id="password", id="login-button"
+- Carrito: data-test="shopping-cart-link"
+- Productos: id="add-to-cart-sauce-labs-backpack"
+- Checkout: id="first-name", id="last-name", id="postal-code"
+
+4.2 FLUJO DE NAVEGACIÓN
+-----------------------
+- Login: https://www.saucedemo.com/
+- Inventario: https://www.saucedemo.com/inventory.html
+- Carrito: https://www.saucedemo.com/cart.html
+- Checkout Step 1: https://www.saucedemo.com/checkout-step-one.html
+- Checkout Step 2: https://www.saucedemo.com/checkout-step-two.html
+- Confirmación: https://www.saucedemo.com/checkout-complete.html
+
+4.3 MENSAJE DE CONFIRMACIÓN
+---------------------------
+El mensaje final mostrado es: "Thank you for your order!"
+
+================================================================================
+5. DIFICULTADES ENCONTRADAS Y SOLUCIONES
+================================================================================
+
+PROBLEMA 1: Configuración de Chrome
+- Solución: Agregué argumentos en serenity.conf como "--remote-allow-origins=*"
+
+PROBLEMA 2: Elementos no encontrados
+- Solución: Usé DevTools (F12) para inspeccionar el HTML real y ajusté
+  los selectores usando "data-test" e "id".
+
+PROBLEMA 3: Esperas insuficientes
+- Solución: Implementé esperas explícitas con WaitUntil usando isClickable()
+  e isVisible().
+
+PROBLEMA 4: Dependencias de Serenity
+- Solución: Configuré correctamente el scope de las dependencias en build.gradle.
+
+================================================================================
+6. TECNOLOGÍAS Y VERSIONES
+================================================================================
+
+| Tecnología       | Versión  |
+|------------------|----------|
+| Java             | 17       |
+| Gradle           | 7.6.1    |
+| SerenityBDD      | 4.0.14   |
+| Cucumber         | 7.14.0   |
+| JUnit            | 4.13.2   |
+| WebDriverManager | 5.6.3    |
+
+================================================================================
+7. CONCLUSIÓN FINAL
+================================================================================
+
+El ejercicio fue completado exitosamente cumpliendo todos los requisitos:
+
+✓ Framework utilizado: SerenityBDD con patrón ScreenPlay
+✓ Autenticación con standard_user / secret_sauce
+✓ Dos productos agregados al carrito (Backpack y Bike Light)
+✓ Visualización del carrito
+✓ Formulario de compra completado
+✓ Confirmación "THANK YOU FOR YOUR ORDER" verificada
+✓ Datos parametrizados en el feature file (Scenario Outline con Examples)
+✓ Reporte Serenity HTML generado
+
+================================================================================
+                              FIN DEL DOCUMENTO
+================================================================================

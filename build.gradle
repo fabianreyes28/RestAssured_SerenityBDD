@@ -1,0 +1,62 @@
+plugins {
+    id 'java'
+    id 'net.serenity-bdd.serenity-gradle-plugin' version '4.0.14'
+}
+
+group = 'com.qa.challenge'
+version = '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Serenity BDD - Framework de automatización
+    implementation 'net.serenity-bdd:serenity-core:4.0.14'
+    implementation 'net.serenity-bdd:serenity-screenplay:4.0.14'
+    implementation 'net.serenity-bdd:serenity-screenplay-webdriver:4.0.14'
+    implementation 'net.serenity-bdd:serenity-ensure:4.0.14'
+    implementation 'net.serenity-bdd:serenity-screenplay-rest:4.0.14'
+
+    //apache poi
+    implementation "org.apache.poi:poi:5.2.3"
+    implementation "org.apache.poi:poi-ooxml:5.2.3"
+
+    // Serenity + Cucumber - Integración BDD
+    testImplementation 'net.serenity-bdd:serenity-cucumber:4.0.14'
+    testImplementation 'net.serenity-bdd:serenity-junit:4.0.14'
+
+    // JUnit 4 - Framework de testing
+    testImplementation 'junit:junit:4.13.2'
+
+    // WebDriverManager - Gestión automática de drivers
+    implementation 'io.github.bonigarcia:webdrivermanager:5.6.3'
+
+    // Logback - Logging
+    implementation 'ch.qos.logback:logback-classic:1.4.14'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnit()
+    systemProperty 'file.encoding', 'UTF-8'
+    testLogging {
+        events 'passed', 'skipped', 'failed'
+    }
+    // Genera reportes de Serenity al finalizar los tests
+    finalizedBy 'aggregate'
+}
+
+serenity {
+    // Genera reporte HTML de una sola página
+    reports = ['single-page-html']
+}
