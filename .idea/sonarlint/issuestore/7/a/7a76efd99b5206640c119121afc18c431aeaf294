@@ -1,0 +1,8 @@
+
+_
+java:S6208©"CMerge the previous cases into this one using comma-separated label.( ÝîÖúÿÿÿÿ
+m	java:S135u"YReduce the total number of break and continue statements in this loop to use at most one.(áéç4
+¯
+java:S11300"“Remove the declaration of thrown exception 'org.apache.poi.openxml4j.exceptions.InvalidFormatException', as it cannot be thrown from method's body.(øû´“ÿÿÿÿÿ
+K
+java:S1172Œ"/Remove this unused method parameter "isHeader".(íƒóîüÿÿÿÿ

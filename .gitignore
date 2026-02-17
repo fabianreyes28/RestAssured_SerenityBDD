@@ -5,6 +5,12 @@ build/
 !**/src/test/**/build/
 .kotlin
 
+# Serenity-BDD
+target
+/target/
+/target/site/serenity/
+*/target/
+
 ### IntelliJ IDEA ###
 .idea/workspace.xml
 .idea/modules.xml

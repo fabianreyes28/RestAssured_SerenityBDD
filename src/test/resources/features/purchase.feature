@@ -1,6 +1,6 @@
 Feature: Purchase products at SauceDemo
 
-  @happyPath @e2e
+  @happyPathPurchase @e2e
   Scenario Outline: Proceso de compra completo
     Given el usuario esta en la pagina de login de SauceDemo
     When inicia sesion con usuario "<username>" y password "<password>"

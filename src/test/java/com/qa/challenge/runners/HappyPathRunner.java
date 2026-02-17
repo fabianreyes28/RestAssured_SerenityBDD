@@ -18,7 +18,7 @@ import static com.qa.challenge.utils.Constans.CLASE_RUNNER;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "com.qa.challenge.stepdefinitions",
-        tags = "@postBooking",
+        tags = "@getBooking",
         plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber.html",
@@ -36,11 +36,6 @@ public class HappyPathRunner {
                 DataToFeature.overrideFeatureFiles(
                         "src/test/resources/features");
         }
-
-
-
-
-
 
 
 }

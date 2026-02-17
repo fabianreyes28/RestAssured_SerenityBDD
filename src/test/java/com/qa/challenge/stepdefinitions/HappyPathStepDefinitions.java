@@ -12,10 +12,6 @@ import net.serenitybdd.screenplay.actors.OnlineCast;
 import net.serenitybdd.screenplay.rest.abilities.CallAnApi;
 import net.thucydides.model.util.EnvironmentVariables;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import static com.qa.challenge.utils.Constans.ACTOR;
 import static com.qa.challenge.utils.Constans.URL_BASE_BOOKER;
 
@@ -39,15 +35,6 @@ public class HappyPathStepDefinitions {
 
 
 
-
-    @Then("the response status code should be success:")
-    public void the_response_status_code_should_be_success(io.cucumber.datatable.DataTable dataTable) {
-
-    }
-    @When("the user creates a booking with {string} {string}")
-    public void the_user_creates_a_booking_with(String firstname, String lastname) {
-        System.out.println(" When ->"+firstname);
-    }
 
     @When("the user creates a booking with:")
     public void the_user_creates_a_booking_with(DataTable dataTable) {
@@ -77,4 +64,21 @@ public class HappyPathStepDefinitions {
     public void the_response_should_contain_a_bookingid() {
 
     }
+
+    @Given("an existing booking has been created")
+    public void an_existing_booking_has_been_created() {
+
+    }
+    @When("the user retrieves the booking by id")
+    public void the_user_retrieves_the_booking_by_id() {
+
+    }
+    @Then("the response booking should contain:")
+    public void the_response_booking_should_contain(DataTable dataTable) {
+
+    }
+
+
+
+
 }

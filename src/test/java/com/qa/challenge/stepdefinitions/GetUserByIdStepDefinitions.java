@@ -38,11 +38,12 @@ public class GetUserByIdStepDefinitions {
 
     @When("User request users by {string}")
     public void user_request_users_by(String id) {
-        System.out.println("when");
+        System.out.println("when id: "+id);
         user.attemptsTo(
                 Get.resource(EDNPOINT_ID + id)
         );
     }
+
 
     @Then("the response status code should be {int}")
     public void the_response_status_code_should_be(int status_code) {

@@ -19,32 +19,6 @@ Feature: Booking CRUD (Happy Path)
    |Ana   |White   |250   |false   |43586   |43595   |Dinner   |200|
 
 
-
-
-
-
-
-
-
-
-  @postBooking1
-  Scenario Outline: Create a booking (POST /booking)
-    When the user creates a booking with "<firstname>" "<lastname>"
-
-    And the response should contain a bookingid
-
-    Examples:
-      | firstname | lastname | totalprice | depositpaid | checkin | checkout | additionalneeds | statusCode |
-   ##@externaldata@src/test/resources/datadriven/datapost.xlsx@Post
-   |Jim   |Brown   |111   |true   |43101   |43466   |Breakfast   |200|
-   |Ana   |White   |250   |false   |43586   |43595   |Dinner   |200|
-
-
- 
-   
-
-
-
   @getBooking
   Scenario: Retrieve a booking by id (GET /booking/{id})
     Given an existing booking has been created

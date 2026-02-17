@@ -11,10 +11,16 @@ Feature: Retrieve booking by id
 
     Examples:
       | bookingId | statusCode |
- ##@externaldata@.\src\test\resources\datadriven\dataGET.xlsx@Get_user_id
+ ##@externaldata@src/test/resources/datadriven/dataget.xlsx@id
    |12   |200|
    |0   |404|
    |-2   |404|
    |abcd   |404|
+
+
+
+
+
+
 
 
